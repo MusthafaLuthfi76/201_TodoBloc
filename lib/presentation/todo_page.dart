@@ -12,7 +12,7 @@ class TodoPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(16.0),
           child: Column(
             children: [
               Text("Todo List"),
@@ -35,7 +35,7 @@ class TodoPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                    SizedBox(width: 16.0),
+                  SizedBox(width: 16.0),
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {
@@ -115,51 +115,50 @@ class TodoPage extends StatelessWidget {
                             margin: EdgeInsets.only(bottom: 8.0),
                             padding: EdgeInsets.all(16.0),
                             decoration: BoxDecoration(
-                                color: Colors.blue[50],
-                                borderRadius: BorderRadius.circular(8.0),
+                              color: Colors.blue[50],
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                    Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                            Text(
-                                                todo.title,
-                                                style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.bold,
-                                                ),
-                                            ),
-                                            SizedBox(height: 4.0),
-                                            Text(
-                                                '${todo.date.day}/${todo.date.month}/${todo.date.year}',
-                                                style: TextStyle(
-                                                    color: Colors.grey,
-                                                ),
-                                            ),
-                                            SizedBox(height: 4.0),
-                                            Text(
-                                                todo.isCompleted 
-                                                ? 'Completed' 
-                                                : 'Not Completed',
-                                                style: TextStyle(
-                                                    color: todo.isCompleted 
-                                                    ? Colors.green 
-                                                    : Colors.red,
-                                                ),
-                                            ),
-                                        ],
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      todo.title,
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
-                                    Checkbox(
-                                        value: todo.isCompleted, 
-                                        onChanged: (value){
-                                            context.read<TodoBloc>().add(
-                                                TodoEventComplete(index: index),
-                                            );
-                                        },
+                                    SizedBox(height: 4.0),
+                                    Text(
+                                      '${todo.date.day}/${todo.date.month}/${todo.date.year}',
+                                      style: TextStyle(color: Colors.grey),
                                     ),
-                                ],
+                                    SizedBox(height: 4.0),
+                                    Text(
+                                      todo.isCompleted
+                                          ? 'Completed'
+                                          : 'Not Completed',
+                                      style: TextStyle(
+                                        color:
+                                            todo.isCompleted
+                                                ? Colors.green
+                                                : Colors.red,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Checkbox(
+                                  value: todo.isCompleted,
+                                  onChanged: (value) {
+                                    context.read<TodoBloc>().add(
+                                      TodoEventComplete(index: index),
+                                    );
+                                  },
+                                ),
+                              ],
                             ),
                           );
                         },
