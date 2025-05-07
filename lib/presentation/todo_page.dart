@@ -164,7 +164,7 @@ class TodoPage extends StatelessWidget {
                         },
                       );
                     } else {
-                      return Center(child: Text('No todos found'));
+                      return Center(child: Text('No todos Available'));
                     }
                   },
                 ),
