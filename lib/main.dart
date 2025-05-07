@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todoapp/bloc/todo_bloc.dart';
+import 'package:todoapp/presentation/todo_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,12 +13,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return BlocProvider(create: (context) => TodoBloc(), 
+    child: MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple,
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+      home: TodoPage()));
   }
 }
