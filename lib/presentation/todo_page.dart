@@ -6,10 +6,13 @@ class TodoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-            children: [
-                Text("Todo List")
-                ],
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+              children: [
+                  Text("Todo List")
+                  ],
+          ),
         ),
     );
   }
